@@ -37,7 +37,6 @@ struct Produto
             cout << "Nome: " << produtos[i].nome << endl;
             cout << "Preço: " << produtos[i].preco << " €" << endl;
             cout << "Quantidade: " << produtos[i].quantidade << endl;
-            cout << "-------------------------" << endl;
         }
     }
 }
@@ -55,11 +54,13 @@ int main() {
     Produto Produtos [100];
     int quantidadeAtual = 0;
     int opcao;
+do{
+
 
 cout << "1. Adicionar Produto " << endl;
 cout << "2. Exibir Produtos " << endl;
 cout << "3. Calcular o Valor Total do Stock " << endl;
-cout << "4. Sair " << endl;
+cout << "0. Sair " << endl;
 cin >> opcao;
 
 switch (opcao) {
@@ -82,6 +83,9 @@ switch (opcao) {
     default:
             cout << "Opcao invalida, tente novamente " << endl;
         break;
-}
+}   
+    }
+    while (opcao != 0);  // O loop continua até o usuário escolher sair (escolha == 0)
+
     return 0;
 };
