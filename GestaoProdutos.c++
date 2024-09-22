@@ -15,6 +15,7 @@ struct Produto
 
             // Funçao para adicionar o produto
         cout << "Nome do produto " << endl;
+            cin.ignore();
             getline(cin, produtos[quantidadeAtual].nome);
 
             // Preço do produto 
@@ -27,32 +28,60 @@ struct Produto
 
 };
 
-    // Função para exibir os produtos 
-    void exibirProdutos( const Produto produtos[], int quantidadeAtual) {
-
-        
-
-
-
+    void exibirProdutos(const Produto produtos[], int quantidadeAtual) {
+    if (quantidadeAtual == 0) {
+        cout << "Nenhum produto registado." << endl;
+    } else {
+        for (int i = 0; i < quantidadeAtual; i++) {
+            cout << "Produto " << i + 1 << ": " << endl;
+            cout << "Nome: " << produtos[i].nome << endl;
+            cout << "Preço: " << produtos[i].preco << " €" << endl;
+            cout << "Quantidade: " << produtos[i].quantidade << endl;
+            cout << "-------------------------" << endl;
+        }
     }
+}
+
+    float calcularValorTotal (const Produto produtos[], int quantidadeAtual) {
+        float valorTotal = 0.0;
+        for (int i = 0; i < quantidadeAtual; i++) {
+            valorTotal += produtos[i].preco * produtos[i].quantidade;
+        
+    }
+        return valorTotal;
+}
 
 int main() {
+    Produto Produtos [100];
+    int quantidadeAtual = 0;
+    int opcao;
 
 cout << "1. Adicionar Produto " << endl;
 cout << "2. Exibir Produtos " << endl;
 cout << "3. Calcular o Valor Total do Stock " << endl;
 cout << "4. Sair " << endl;
-cin >> escolha;
+cin >> opcao;
 
-switch (escolha)
-{
-case 1:
-    adicionarProduto(Produto);
-    break;
+switch (opcao) {
+    case 1:
+            adicionarProduto(Produtos, quantidadeAtual);
+        break;
 
-default:
-    cout << "Opcao invalida, tente novamente " << endl;
-    break;
+    case 2:
+            exibirProdutos(Produtos, quantidadeAtual);
+        break;
+
+    case 3:
+            cout <<  "Valor total do stock: " << calcularValorTotal(Produtos, quantidadeAtual) << endl;
+        break;
+
+    case 0:
+            cout << "Sair... " << endl;
+        break;
+
+    default:
+            cout << "Opcao invalida, tente novamente " << endl;
+        break;
 }
-
+    return 0;
 };
