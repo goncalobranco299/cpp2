@@ -16,9 +16,7 @@ struct Produto //Define uma estrutura(struct) chamada Produto
 
             // Funçao para adicionar o produto
         cout << "Nome do produto: ";
-            cin.ignore(); //ignora qualquer caractere
-            getline(cin, produtos[quantidadeAtual].nome); // Le uma linha completa incluido espacos e armazena o valor no campo nome
-
+            cin >> produtos[quantidadeAtual].nome;
             // Preço do produto 
         cout << "Preco do produto: ";
             cin >> produtos[quantidadeAtual].preco;
