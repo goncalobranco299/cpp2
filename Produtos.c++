@@ -116,7 +116,7 @@ void alterarProduto() {
     string id, nome, quantidade, preco, status;
     string idProcurado;
     cout << "Introduza o ID do produto a alterar: ";
-    getline(cin, idProcurado);
+    cin >> idProcurado;
 
     string linha;
     long pos;
