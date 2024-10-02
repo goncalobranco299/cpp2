@@ -81,17 +81,17 @@ void criarProduto() {
 void consultarProdutos() {
     ifstream file("produtos.txt");
     if (!file) {
-        cout << "Erro ao abrir o ficheiro!" << endl;
+        cout << "Erro ao abrir o ficheiro ou nenhum ficheiro registado!" << endl;
         return;
     }
 
     string linha;
-    cout << "\nLista de Produtos Ativos:" << endl;
-    while (getline(file, linha)) {
+    cout << "Lista de Produtos Ativos:" << endl;
+    while (getline(file, linha)) {  // while usa a funcao getline para ler linha por linha do ficheiro file
         istringstream ss(linha);
         string id, nome, quantidade, preco, status;
         getline(ss, id, ',');
-        getline(ss, nome, ',');
+        getline(ss, nome, ',');                 // extrair os campos de cada produto da linha
         getline(ss, quantidade, ',');
         getline(ss, preco, ',');
         getline(ss, status, ',');
@@ -107,7 +107,7 @@ void consultarProdutos() {
 
 // Função para alterar um produto
 void alterarProduto() {
-    fstream file("produtos.txt", ios::in | ios::out);
+    fstream file("produtos.txt", ios::in | ios::out); // ios::in quer ler o conteudo do ficheiro ios::out quer escrever no ficheiro
     if (!file) {
         cout << "Erro ao abrir o ficheiro!" << endl;
         return;
@@ -118,11 +118,10 @@ void alterarProduto() {
     cout << "Introduza o ID do produto a alterar: ";
     cin >> idProcurado;
 
-    string linha;
-    long pos;
+    string linha; 
     bool encontrado = false;
 
-    while (file.seekg(0, ios::cur), pos = file.tellg(), getline(file, linha)) {
+    while ( getline(file, linha)) {
         istringstream ss(linha);
         getline(ss, id, ',');
         getline(ss, nome, ',');
@@ -132,12 +131,15 @@ void alterarProduto() {
 
         if (id == idProcurado && status == "A") {
             encontrado = true;
-            cout << "Produto encontrado. Introduza os novos dados." << endl;
-            cout << "Nome: "; getline(cin, nome);
-            cout << "Quantidade: "; getline(cin, quantidade);
-            cout << "Preço: "; getline(cin, preco);
+            cout << "Produto encontrado." << endl;
+            cout << "Introduza os novos dados:" << endl;
+            cout << "Nome: "; 
+            cin >> nome;
+            cout << "Quantidade: "; 
+            cin >> quantidade;
+            cout << "Preco: "; 
+            cin >> preco;
 
-            file.seekp(pos);
             file << id << "," << nome << "," << quantidade << "," << preco << "," << status << endl;
             break;
         }
@@ -163,10 +165,9 @@ void eliminarProduto() {
     cin >>  idProcurado;
 
     string linha, id, nome, quantidade, preco, status;
-    long pos;
     bool encontrado = false;
 
-    while (file.seekg(0, ios::cur), pos = file.tellg(), getline(file, linha)) {
+    while ( getline(file, linha)) { 
         istringstream ss(linha);
         getline(ss, id, ',');
         getline(ss, nome, ',');
@@ -175,8 +176,7 @@ void eliminarProduto() {
         getline(ss, status, ',');
 
         if (id == idProcurado && status == "A") {
-            encontrado = true;
-            file.seekp(pos);
+            encontrado = true; // o produto que o utilizador que estava a procurar foi encontrado
             file << id << "," << nome << "," << quantidade << "," << preco << "," << "D" << endl;
             cout << "Produto eliminado com sucesso." << endl;
             break;
@@ -184,8 +184,8 @@ void eliminarProduto() {
     }
 
     if (!encontrado) {
-        cout << "Produto nao encontrado ou ja foi eliminado." << endl;
+        cout << "Produto nao encontrado ou ja foi eliminado. " << endl;
     }
 
     file.close();
-}
+};
