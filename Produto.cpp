@@ -33,7 +33,7 @@ int main() {
                 cout << "A sair do programa..." << endl;
                 break;
             default:
-                cout << "Opcao inválida. Tente novamente." << endl;
+                cout << "Opcao invalida. Tente novamente." << endl;
         }
     } while (opcao != 5); // Enquanto o utilizador nao escolher a opcao 5, ira repetir sempre o programa
     return 0;
@@ -114,7 +114,7 @@ void alterarProduto() {
 
     ofstream fileOut("temp.txt"); // Abrir um ficheiro temporário para escrita
     if (!fileOut) {
-        cout << "Erro ao criar ficheiro temporário!" << endl;
+        cout << "Erro ao criar ficheiro temporario!" << endl;
         return;
     }
 
@@ -143,7 +143,7 @@ void alterarProduto() {
             cin >> nome;
             cout << "Quantidade: ";
             cin >> quantidade;
-            cout << "Preço: ";
+            cout << "Preco: ";
             cin >> preco;
 
             // Escrever os novos dados no ficheiro temporário
@@ -179,7 +179,7 @@ void eliminarProduto() {
     cin >> idProcurado;
 
     string linha, id, nome, quantidade, preco, status; // Declarando 5 variáveis do tipo string
-    bool encontrado = false;
+    bool encontrado = false; // Declara uma variável chamada 'encontrado' do tipo 'bool' e inicializa com o valor 'false'
 
     ofstream tempFile("temp.txt");
 
@@ -201,7 +201,7 @@ void eliminarProduto() {
     }
 
     if (!encontrado) {
-        cout << "Produto não encontrado ou já foi eliminado." << endl;
+        cout << "Produto nao encontrado ou já foi eliminado." << endl;
     }
 
     file.close();
