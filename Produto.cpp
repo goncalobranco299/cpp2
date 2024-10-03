@@ -119,7 +119,7 @@ void alterarProduto() {
     }
 
     string idProcurado;
-    cout << "Introduza o ID do produto a alterar: ";
+    cout << "Introduza o ID do produto para alterar: ";
     cin >> idProcurado;
 
     string linha;  // Declara uma variável chamada 'linha' do tipo 'string'
@@ -175,7 +175,7 @@ void eliminarProduto() {
     }
 
     string idProcurado;
-    cout << "Introduza o ID do produto a eliminar: ";
+    cout << "Introduza o ID do produto que deseja  eliminar: ";
     cin >> idProcurado;
 
     string linha, id, nome, quantidade, preco, status; // Declarando 5 variáveis do tipo string
@@ -196,7 +196,7 @@ void eliminarProduto() {
             tempFile << id << "," << nome << "," << quantidade << "," << preco << ",D" << endl; // Marcar como "D"
             cout << "Produto eliminado com sucesso." << endl;
         } else {
-            tempFile << linha << endl; // Manter os outros produtos inalterados
+            tempFile << linha << endl; 
         }
     }
 
