@@ -181,7 +181,7 @@ void eliminarProduto() {
     string linha, id, nome, quantidade, preco, status; // Declarando 5 variáveis do tipo string
     bool encontrado = false; // Declara uma variável chamada 'encontrado' do tipo 'bool' e inicializa com o valor 'false'
 
-    ofstream tempFile("temp.txt");
+    ofstream tempFile("produtos.txt");
 
     while (getline(file, linha)) {
         istringstream ss(linha);
@@ -201,7 +201,7 @@ void eliminarProduto() {
     }
 
     if (!encontrado) {
-        cout << "Produto nao encontrado ou já foi eliminado." << endl;
+        cout << "Produto nao encontrado ou ja foi eliminado." << endl;
     }
 
     file.close();
