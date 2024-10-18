@@ -35,23 +35,27 @@ class Refrigerante{
         //Abrir a lata
         void abrirLata(){
             if (refrigerante.status == false){
-                cout << "A lata esta fechada " << endl;
-            }else{
                 cout << "Abrindo a lata " << endl;
+            }else{
+                cout << "A lata esta fechada " << endl;
                 refrigerante.status = true;
             }
             
         }
 
 
-        void beberRefrigerante(double qnt){
+        void beberRefrigerante(){
+            double qnt;
+            
             if(refrigerante.status){
-                cout << "ha" << qntSumoDisponivel << "de refrigerante na lata " << endl;
+            cout << "há" << qntSumoDisponivel << "de refrigerante na lata " << endl;
+            cout << "Digite a quantidade de refrigerante que deseja beber" << endl;
+            cin >> qnt;
                 if(qnt <= qntSumoDisponivel){
                     qntSumoDisponivel -= qnt;
                     cout << "Voce bebeu" << qnt << "litros de referencia" << endl;
-                    }else{
-                        cout << "Nao ha refrigerante sufeciente " << endl;
+                }else{
+                    cout << "Nao ha refrigerante sufeciente " << endl;
                     }
                 }else{
                     cout << "Voce precisa abrir a lata antes de beber" << endl;
@@ -85,9 +89,9 @@ int main(){
             refri1.abrirLata();
         }else if(opcao == 2){
             double qnt;
-            cout << "Digite a quantidade de refrigerante que deseja beber" << endl;
+            cout << "Digite a quantidade de refrigerante que deseja beber: ";
             cin >> qnt;
-            refri1.beberRefrigerante(qnt);
+            refri1.beberRefrigerante();
         }else if(opcao == 3){
             break;
         }else{
