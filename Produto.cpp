@@ -6,7 +6,7 @@
 using namespace std;
 
 void criarProduto(), consultarProdutos(), alterarProduto();
-void eliminarProduto(), mostrarMenu();
+ void eliminarProduto(), mostrarMenu();
 
 int main() {
     int opcao;
